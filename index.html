@@ -1,4 +1,3 @@
-# math-solver
 <!DOCTYPE html>
 <html lang="bn">
 <head>
@@ -7,259 +6,141 @@
 <title>AI সমাধানকারী - Radwan Islam Alif</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap');
-
-:root {
-  --bg: #060810;
-  --s1: #0d1117;
-  --s2: #161b22;
-  --s3: #21262d;
-  --math: #f97316;
-  --phys: #3b82f6;
-  --chem: #10b981;
-  --text: #f0f6fc;
-  --muted: #8b949e;
-  --border: #30363d;
-}
-
+:root{--bg:#060810;--s1:#0d1117;--s2:#161b22;--s3:#21262d;--math:#f97316;--phys:#3b82f6;--chem:#10b981;--text:#f0f6fc;--muted:#8b949e;--border:#30363d}
 *{margin:0;padding:0;box-sizing:border-box}
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Hind Siliguri', sans-serif;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
-
-body::before {
-  content:'';
-  position:fixed;
-  inset:0;
-  background:
-    radial-gradient(ellipse 60% 40% at 10% 20%, rgba(249,115,22,.08) 0%, transparent 50%),
-    radial-gradient(ellipse 50% 35% at 90% 10%, rgba(59,130,246,.07) 0%, transparent 50%),
-    radial-gradient(ellipse 40% 30% at 50% 90%, rgba(16,185,129,.06) 0%, transparent 50%);
-  pointer-events:none;
-  z-index:0;
-}
-
-.wrap {max-width:900px;margin:0 auto;padding:2rem 1.2rem;position:relative;z-index:1}
-
-/* Header */
-header {text-align:center;margin-bottom:2rem;animation:fadeDown .6s ease}
-.brand {font-family:'Lexend',sans-serif;font-size:2.2rem;font-weight:800;letter-spacing:-1px}
-.brand span.m {color:var(--math)}
-.brand span.p {color:var(--phys)}
-.brand span.c {color:var(--chem)}
-.tagline {color:var(--muted);font-size:.9rem;margin-top:.4rem}
-.by {font-size:.75rem;margin-top:.3rem;color:#6366f1;font-weight:600}
+body{background:var(--bg);color:var(--text);font-family:'Hind Siliguri',sans-serif;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 60% 40% at 10% 20%,rgba(249,115,22,.08) 0%,transparent 50%),radial-gradient(ellipse 50% 35% at 90% 10%,rgba(59,130,246,.07) 0%,transparent 50%),radial-gradient(ellipse 40% 30% at 50% 90%,rgba(16,185,129,.06) 0%,transparent 50%);pointer-events:none;z-index:0}
+.wrap{max-width:900px;margin:0 auto;padding:2rem 1.2rem;position:relative;z-index:1}
+header{text-align:center;margin-bottom:2rem;animation:fadeDown .6s ease}
+.brand{font-family:'Lexend',sans-serif;font-size:2rem;font-weight:800;letter-spacing:-1px}
+.brand span.m{color:var(--math)}.brand span.p{color:var(--phys)}.brand span.c{color:var(--chem)}
+.tagline{color:var(--muted);font-size:.88rem;margin-top:.4rem}
+.by{font-size:.75rem;margin-top:.3rem;color:#6366f1;font-weight:600}
 
 /* Subject Pills */
-.subjects {
-  display:flex;gap:.75rem;justify-content:center;
-  margin-bottom:1.8rem;flex-wrap:wrap;
-  animation:fadeUp .6s ease .1s both;
-}
-.pill {
-  padding:.5rem 1.2rem;border-radius:30px;font-size:.85rem;font-weight:600;
-  cursor:pointer;transition:all .25s;border:2px solid transparent;
-  font-family:'Lexend',sans-serif;
-}
-.pill.math {background:rgba(249,115,22,.12);color:var(--math);border-color:rgba(249,115,22,.3)}
-.pill.phys {background:rgba(59,130,246,.12);color:var(--phys);border-color:rgba(59,130,246,.3)}
-.pill.chem {background:rgba(16,185,129,.12);color:var(--chem);border-color:rgba(16,185,129,.3)}
-.pill.all {background:rgba(139,92,246,.12);color:#a78bfa;border-color:rgba(139,92,246,.3)}
-.pill.active,.pill:hover {transform:scale(1.05);box-shadow:0 4px 15px rgba(0,0,0,.3)}
-.pill.math.active {background:rgba(249,115,22,.25)}
-.pill.phys.active {background:rgba(59,130,246,.25)}
-.pill.chem.active {background:rgba(16,185,129,.25)}
-.pill.all.active {background:rgba(139,92,246,.25)}
+.subjects{display:flex;gap:.6rem;justify-content:center;margin-bottom:1.5rem;flex-wrap:wrap;animation:fadeUp .6s ease .1s both}
+.pill{padding:.45rem 1rem;border-radius:30px;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .25s;border:2px solid transparent;font-family:'Lexend',sans-serif}
+.pill.math{background:rgba(249,115,22,.12);color:var(--math);border-color:rgba(249,115,22,.3)}
+.pill.phys{background:rgba(59,130,246,.12);color:var(--phys);border-color:rgba(59,130,246,.3)}
+.pill.chem{background:rgba(16,185,129,.12);color:var(--chem);border-color:rgba(16,185,129,.3)}
+.pill.all{background:rgba(139,92,246,.12);color:#a78bfa;border-color:rgba(139,92,246,.3)}
+.pill.active,.pill:hover{transform:scale(1.05)}
+.pill.math.active{background:rgba(249,115,22,.25)}.pill.phys.active{background:rgba(59,130,246,.25)}
+.pill.chem.active{background:rgba(16,185,129,.25)}.pill.all.active{background:rgba(139,92,246,.25)}
 
-/* Upload */
-.upload-area {
-  background:var(--s1);
-  border:2px dashed var(--border);
-  border-radius:20px;
-  padding:2.5rem 1.5rem;
-  text-align:center;
-  cursor:pointer;
-  transition:all .3s;
-  margin-bottom:1.5rem;
-  animation:fadeUp .6s ease .2s both;
-  position:relative;overflow:hidden;
-}
-.upload-area::before {
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(249,115,22,.03),rgba(59,130,246,.03),rgba(16,185,129,.03));
-}
-.upload-area:hover,.upload-area.drag {
-  border-color:#f97316;
-  background:rgba(249,115,22,.04);
-  transform:translateY(-3px);
-  box-shadow:0 12px 40px rgba(249,115,22,.1);
-}
-.upload-icon {font-size:3rem;display:block;margin-bottom:.75rem;animation:float 3s ease-in-out infinite}
-.upload-area h3 {font-size:1.1rem;font-weight:600;margin-bottom:.35rem}
-.upload-area p {color:var(--muted);font-size:.82rem}
-#fi {display:none}
+/* Input Mode Tabs */
+.mode-tabs{display:flex;background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:.3rem;margin-bottom:1.5rem;animation:fadeUp .6s ease .15s both}
+.mode-tab{flex:1;padding:.65rem;text-align:center;border-radius:10px;cursor:pointer;font-size:.88rem;font-weight:600;transition:all .25s;color:var(--muted)}
+.mode-tab.active{background:linear-gradient(135deg,rgba(249,115,22,.2),rgba(59,130,246,.2));color:var(--text);box-shadow:0 2px 10px rgba(0,0,0,.3)}
 
-/* Preview */
-.prev-wrap {display:none;margin-bottom:1.5rem;animation:fadeUp .4s ease}
-.prev-wrap.show {display:block}
-.prev-top {display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem}
-.prev-top span {font-size:.82rem;color:var(--muted)}
-.prev-img {width:100%;max-height:320px;object-fit:contain;border-radius:14px;border:1px solid var(--border)}
-.rm-btn {background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:#f87171;padding:.3rem .75rem;border-radius:8px;cursor:pointer;font-size:.78rem;font-family:inherit;transition:all .2s}
+/* Input areas */
+.input-section{animation:fadeUp .6s ease .2s both}
 
-/* Detail input */
-.detail-row {
-  background:var(--s1);border:1px solid var(--border);
-  border-radius:14px;padding:1rem 1.2rem;
-  margin-bottom:1.5rem;
-  animation:fadeUp .6s ease .25s both;
-}
-.detail-row label {font-size:.8rem;color:var(--muted);display:block;margin-bottom:.5rem;font-weight:500}
-.detail-row textarea {
-  width:100%;background:var(--s2);border:1px solid var(--border);
-  color:var(--text);padding:.65rem 1rem;border-radius:10px;
-  font-family:inherit;font-size:.88rem;outline:none;
-  transition:border-color .2s;resize:none;height:70px;
-}
-.detail-row textarea:focus {border-color:#f97316}
-.detail-row textarea::placeholder {color:var(--muted)}
+/* Text Input */
+.text-input-wrap{background:var(--s1);border:1px solid var(--border);border-radius:16px;padding:1.2rem;margin-bottom:1rem}
+.text-input-wrap label{font-size:.8rem;color:var(--muted);display:block;margin-bottom:.6rem;font-weight:500}
+.question-input{width:100%;background:var(--s2);border:1px solid var(--border);color:var(--text);padding:.8rem 1rem;border-radius:12px;font-family:'Hind Siliguri',sans-serif;font-size:.95rem;outline:none;transition:border-color .2s;resize:none;height:120px;line-height:1.6}
+.question-input:focus{border-color:var(--math)}
+.question-input::placeholder{color:var(--muted)}
+.char-count{font-size:.72rem;color:var(--muted);text-align:right;margin-top:.3rem}
+
+/* Quick Examples */
+.examples{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem}
+.ex-btn{background:var(--s2);border:1px solid var(--border);color:var(--muted);padding:.35rem .75rem;border-radius:8px;font-size:.75rem;cursor:pointer;font-family:inherit;transition:all .2s}
+.ex-btn:hover{border-color:var(--math);color:var(--math)}
+
+/* Image Upload */
+.upload-area{background:var(--s1);border:2px dashed var(--border);border-radius:16px;padding:2rem 1.5rem;text-align:center;cursor:pointer;transition:all .3s;margin-bottom:1rem}
+.upload-area:hover,.upload-area.drag{border-color:var(--math);background:rgba(249,115,22,.04);transform:translateY(-2px)}
+.upload-icon{font-size:2.5rem;display:block;margin-bottom:.6rem;animation:float 3s ease-in-out infinite}
+.upload-area h3{font-size:1rem;font-weight:600;margin-bottom:.3rem}
+.upload-area p{color:var(--muted);font-size:.8rem}
+#fi{display:none}
+
+.prev-wrap{display:none;margin-bottom:1rem}
+.prev-wrap.show{display:block}
+.prev-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem}
+.prev-top span{font-size:.8rem;color:var(--muted)}
+.prev-img{width:100%;max-height:280px;object-fit:contain;border-radius:12px;border:1px solid var(--border)}
+.rm-btn{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:#f87171;padding:.28rem .7rem;border-radius:8px;cursor:pointer;font-size:.76rem;font-family:inherit}
+
+/* Extra detail */
+.extra-row{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:.9rem 1.1rem;margin-bottom:1.2rem}
+.extra-row label{font-size:.78rem;color:var(--muted);display:block;margin-bottom:.4rem}
+.extra-row input{width:100%;background:var(--s2);border:1px solid var(--border);color:var(--text);padding:.55rem .9rem;border-radius:9px;font-family:inherit;font-size:.85rem;outline:none;transition:border-color .2s}
+.extra-row input:focus{border-color:var(--phys)}
+.extra-row input::placeholder{color:var(--muted)}
 
 /* Solve Button */
-.solve-btn {
-  width:100%;padding:1rem;border:none;border-radius:14px;
-  font-family:'Lexend',sans-serif;font-size:1.05rem;font-weight:700;
-  cursor:pointer;transition:all .3s;margin-bottom:2rem;
-  display:flex;align-items:center;justify-content:center;gap:.6rem;
-  animation:fadeUp .6s ease .3s both;
-  position:relative;overflow:hidden;
-}
-.solve-btn::before {
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(90deg,var(--math),var(--phys),var(--chem),var(--math));
-  background-size:200%;
-  animation:gradient 3s linear infinite;
-}
-.solve-btn span {position:relative;z-index:1;color:#fff}
-.solve-btn:hover:not(:disabled) {transform:translateY(-2px);box-shadow:0 8px 30px rgba(249,115,22,.3)}
-.solve-btn:disabled {opacity:.6;cursor:not-allowed;transform:none}
-.solve-btn:disabled::before {animation:none;background:var(--s3)}
+.solve-btn{width:100%;padding:.95rem;border:none;border-radius:14px;font-family:'Lexend',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s;margin-bottom:2rem;display:flex;align-items:center;justify-content:center;gap:.6rem;position:relative;overflow:hidden}
+.solve-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--math),var(--phys),var(--chem),var(--math));background-size:200%;animation:gradient 3s linear infinite}
+.solve-btn span{position:relative;z-index:1;color:#fff}
+.solve-btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 30px rgba(249,115,22,.3)}
+.solve-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.solve-btn:disabled::before{animation:none;background:var(--s3)}
 
 /* Loading */
-.loading {display:none;text-align:center;padding:3rem}
-.loading.show {display:block}
-.lab {display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:1rem}
-.beaker {font-size:2.5rem;animation:shake .6s ease-in-out infinite alternate}
-.spin-ring {
-  width:40px;height:40px;
-  border:3px solid var(--border);border-top-color:var(--math);
-  border-radius:50%;animation:spin .8s linear infinite;
-}
-.loading p {color:var(--muted);font-size:.9rem}
-.load-sub {font-size:.78rem;color:#475569;margin-top:.35rem}
+.loading{display:none;text-align:center;padding:2.5rem}
+.loading.show{display:block}
+.lab{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:1rem}
+.beaker{font-size:2.2rem;animation:shake .6s ease-in-out infinite alternate}
+.spin-ring{width:38px;height:38px;border:3px solid var(--border);border-top-color:var(--math);border-radius:50%;animation:spin .8s linear infinite}
+.loading p{color:var(--muted);font-size:.88rem}
 
 /* Result */
-.result {animation:fadeUp .5s ease}
-.result-header {
-  background:var(--s1);border:1px solid var(--border);
-  border-radius:16px;padding:1.2rem 1.5rem;
-  margin-bottom:1.2rem;
-  display:flex;align-items:center;gap:1rem;
-}
-.subj-badge {
-  padding:.4rem 1rem;border-radius:20px;
-  font-size:.78rem;font-weight:700;font-family:'Lexend',sans-serif;
-}
-.subj-math {background:rgba(249,115,22,.2);color:var(--math);border:1px solid rgba(249,115,22,.4)}
-.subj-phys {background:rgba(59,130,246,.2);color:var(--phys);border:1px solid rgba(59,130,246,.4)}
-.subj-chem {background:rgba(16,185,129,.2);color:var(--chem);border:1px solid rgba(16,185,129,.4)}
-.subj-gen {background:rgba(139,92,246,.2);color:#a78bfa;border:1px solid rgba(139,92,246,.4)}
+.result{animation:fadeUp .5s ease}
+.result-header{background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.4rem;margin-bottom:1.1rem;display:flex;align-items:center;gap:.9rem}
+.subj-badge{padding:.35rem .9rem;border-radius:20px;font-size:.76rem;font-weight:700;font-family:'Lexend',sans-serif}
+.subj-math{background:rgba(249,115,22,.2);color:var(--math);border:1px solid rgba(249,115,22,.4)}
+.subj-phys{background:rgba(59,130,246,.2);color:var(--phys);border:1px solid rgba(59,130,246,.4)}
+.subj-chem{background:rgba(16,185,129,.2);color:var(--chem);border:1px solid rgba(16,185,129,.4)}
+.subj-gen{background:rgba(139,92,246,.2);color:#a78bfa;border:1px solid rgba(139,92,246,.4)}
+.result-title{font-size:.95rem;font-weight:600;flex:1}
 
-.result-title {font-size:1rem;font-weight:600;flex:1}
+.steps-wrap{display:flex;flex-direction:column;gap:.9rem;margin-bottom:1.1rem}
+.step-card{background:var(--s1);border:1px solid var(--border);border-radius:13px;padding:1.1rem;border-left:3px solid var(--math);animation:fadeUp .4s ease both}
+.step-card.phys{border-left-color:var(--phys)}.step-card.chem{border-left-color:var(--chem)}
+.step-num{font-size:.68rem;font-weight:700;font-family:'Lexend',sans-serif;text-transform:uppercase;letter-spacing:.06em;color:var(--math);margin-bottom:.35rem}
+.step-card.phys .step-num{color:var(--phys)}.step-card.chem .step-num{color:var(--chem)}
+.step-title{font-size:.88rem;font-weight:600;margin-bottom:.45rem}
+.step-body{font-size:.83rem;line-height:1.7;color:#cbd5e1}
+.step-formula{background:var(--s2);border:1px solid var(--border);border-radius:8px;padding:.55rem .9rem;font-family:monospace;font-size:.86rem;color:#fcd34d;margin:.45rem 0}
 
-/* Steps */
-.steps-wrap {display:flex;flex-direction:column;gap:1rem;margin-bottom:1.2rem}
-.step-card {
-  background:var(--s1);border:1px solid var(--border);
-  border-radius:14px;padding:1.2rem;
-  border-left:3px solid var(--math);
-  animation:fadeUp .4s ease both;
-}
-.step-card.phys {border-left-color:var(--phys)}
-.step-card.chem {border-left-color:var(--chem)}
-.step-num {
-  font-size:.7rem;font-weight:700;font-family:'Lexend',sans-serif;
-  text-transform:uppercase;letter-spacing:.06em;
-  color:var(--math);margin-bottom:.4rem;
-}
-.step-card.phys .step-num {color:var(--phys)}
-.step-card.chem .step-num {color:var(--chem)}
-.step-title {font-size:.9rem;font-weight:600;margin-bottom:.5rem}
-.step-body {font-size:.85rem;line-height:1.7;color:#cbd5e1}
-.step-formula {
-  background:var(--s2);border:1px solid var(--border);
-  border-radius:8px;padding:.6rem 1rem;
-  font-family:monospace;font-size:.88rem;
-  color:#fcd34d;margin:.5rem 0;
-}
+.final-ans{background:linear-gradient(135deg,rgba(249,115,22,.1),rgba(59,130,246,.08));border:1px solid rgba(249,115,22,.3);border-radius:14px;padding:1.2rem 1.4rem;margin-bottom:1.1rem}
+.final-label{font-size:.73rem;font-weight:700;color:var(--math);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.45rem}
+.final-value{font-size:1.1rem;font-weight:700;color:var(--text)}
+.final-unit{color:var(--math);font-size:.85rem;margin-top:.2rem}
 
-/* Final Answer */
-.final-ans {
-  background:linear-gradient(135deg,rgba(249,115,22,.1),rgba(59,130,246,.08));
-  border:1px solid rgba(249,115,22,.3);
-  border-radius:16px;padding:1.3rem 1.5rem;
-  margin-bottom:1.2rem;
-}
-.final-label {font-size:.75rem;font-weight:700;color:var(--math);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem}
-.final-value {font-size:1.15rem;font-weight:700;color:var(--text)}
-.final-unit {color:var(--math);font-size:.9rem;margin-top:.25rem}
+.tips-box{background:var(--s1);border:1px solid var(--border);border-radius:13px;padding:1.1rem}
+.tips-label{font-size:.76rem;font-weight:600;color:#fbbf24;margin-bottom:.7rem;display:flex;align-items:center;gap:.4rem}
+.tip-item{font-size:.8rem;color:#94a3b8;padding:.35rem 0;border-bottom:1px solid var(--border);line-height:1.5}
+.tip-item:last-child{border-bottom:none}
+.tip-item::before{content:'💡 '}
 
-/* Tips */
-.tips-box {
-  background:var(--s1);border:1px solid var(--border);
-  border-radius:14px;padding:1.2rem;
-}
-.tips-label {font-size:.78rem;font-weight:600;color:#fbbf24;margin-bottom:.75rem;display:flex;align-items:center;gap:.4rem}
-.tip-item {
-  font-size:.82rem;color:#94a3b8;
-  padding:.4rem 0;border-bottom:1px solid var(--border);
-  line-height:1.5;
-}
-.tip-item:last-child {border-bottom:none}
-.tip-item::before {content:'💡 '}
+.act-bar{display:flex;gap:.7rem;margin-top:1.4rem;padding-top:1.1rem;border-top:1px solid var(--border)}
+.act-btn{flex:1;padding:.72rem;border-radius:11px;font-family:inherit;font-size:.83rem;font-weight:600;cursor:pointer;transition:all .2s;border:none}
+.copy-b{background:var(--s2);color:var(--text);border:1px solid var(--border)}
+.copy-b:hover{border-color:var(--math);color:var(--math)}
+.new-b{background:linear-gradient(135deg,var(--math),var(--phys));color:#fff}
 
-/* Action Bar */
-.act-bar {display:flex;gap:.75rem;margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid var(--border)}
-.act-btn {flex:1;padding:.75rem;border-radius:12px;font-family:inherit;font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s;border:none}
-.copy-b {background:var(--s2);color:var(--text);border:1px solid var(--border)}
-.copy-b:hover {border-color:#f97316;color:#f97316}
-.new-b {background:linear-gradient(135deg,var(--math),var(--phys));color:#fff}
+.err-box{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.25);border-radius:11px;padding:.9rem 1.1rem;color:#fca5a5;font-size:.83rem;margin-bottom:1rem;display:none}
+.err-box.show{display:block}
 
-/* Error */
-.err-box {background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.25);border-radius:12px;padding:1rem 1.2rem;color:#fca5a5;font-size:.85rem;margin-bottom:1rem;display:none}
-.err-box.show {display:block}
-
-/* Animations */
-@keyframes fadeDown {from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadeUp {from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@keyframes spin {to{transform:rotate(360deg)}}
-@keyframes float {0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@keyframes shake {from{transform:rotate(-5deg)}to{transform:rotate(5deg)}}
-@keyframes gradient {0%{background-position:0%}100%{background-position:200%}}
-@media(max-width:600px){.act-bar{flex-direction:column}.brand{font-size:1.7rem}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes shake{from{transform:rotate(-5deg)}to{transform:rotate(5deg)}}
+@keyframes gradient{0%{background-position:0%}100%{background-position:200%}}
+@media(max-width:600px){.act-bar{flex-direction:column}.brand{font-size:1.6rem}}
 </style>
 </head>
 <body>
 <div class="wrap">
 
 <header>
-  <div class="brand">
-    <span class="m">গণিত</span> · <span class="p">পদার্থ</span> · <span class="c">রসায়ন</span>
-  </div>
-  <p class="tagline">🔬 ছবি পাঠাও — সমাধান + ব্যাখ্যা পাও</p>
+  <div class="brand"><span class="m">গণিত</span> · <span class="p">পদার্থ</span> · <span class="c">রসায়ন</span></div>
+  <p class="tagline">✍️ লিখো অথবা 📸 ছবি দাও — সমাধান + ব্যাখ্যা পাও</p>
   <p class="by">✨ Made by Radwan Islam Alif</p>
 </header>
 
@@ -270,32 +151,59 @@ header {text-align:center;margin-bottom:2rem;animation:fadeDown .6s ease}
   <div class="pill chem" onclick="setSubj(this,'chem')">🧪 রসায়ন</div>
 </div>
 
+<!-- Mode Tabs -->
+<div class="mode-tabs">
+  <div class="mode-tab active" id="tabText" onclick="setMode('text')">✍️ লিখে প্রশ্ন করো</div>
+  <div class="mode-tab" id="tabImg" onclick="setMode('image')">📸 ছবি দিয়ে প্রশ্ন করো</div>
+</div>
+
 <div class="err-box" id="err">⚠️ <span id="errMsg"></span></div>
 
-<div class="upload-area" id="uploadArea" onclick="document.getElementById('fi').click()">
-  <span class="upload-icon">📸</span>
-  <h3>প্রশ্নের ছবি আপলোড করুন</h3>
-  <p>গণিত, পদার্থ বা রসায়নের যেকোনো প্রশ্নের ছবি দিন</p>
-  <p style="margin-top:.4rem;font-size:.75rem;color:#475569">JPG, PNG সাপোর্টেড • ড্র্যাগ & ড্রপ করুন</p>
-  <input type="file" id="fi" accept="image/*">
-</div>
+<div class="input-section">
 
-<div class="prev-wrap" id="prevWrap">
-  <div class="prev-top">
-    <span id="fname">📄 ছবি লোড হয়েছে</span>
-    <button class="rm-btn" onclick="rmImg()">✕ সরান</button>
+  <!-- Text Mode -->
+  <div id="textMode">
+    <div class="text-input-wrap">
+      <label>📝 তোমার প্রশ্ন লিখো (বাংলা বা English)</label>
+      <textarea class="question-input" id="qInput" placeholder="যেমন: একটি বস্তুর ভর 5kg এবং ত্বরণ 3m/s²। বলের মান কত?&#10;অথবা: 2x + 5 = 15 হলে x এর মান কত?&#10;অথবা: NaOH + HCl বিক্রিয়া ব্যাখ্যা করো" oninput="updateChar()"></textarea>
+      <div class="char-count"><span id="charCount">0</span> অক্ষর</div>
+    </div>
+    <div class="examples">
+      <span style="font-size:.75rem;color:var(--muted);align-self:center;">উদাহরণ:</span>
+      <button class="ex-btn" onclick="setEx('2x² + 5x - 3 = 0 সমীকরণ সমাধান করো')">📐 দ্বিঘাত সমীকরণ</button>
+      <button class="ex-btn" onclick="setEx('একটি বস্তু 20m/s বেগে নিক্ষেপ করা হলো। সর্বোচ্চ উচ্চতা কত?')">⚡ প্রক্ষেপণ</button>
+      <button class="ex-btn" onclick="setEx('H₂ + O₂ → H₂O বিক্রিয়া সমতা করো')">🧪 রাসায়নিক সমীকরণ</button>
+      <button class="ex-btn" onclick="setEx('ত্রিভুজের তিনটি বাহু 3, 4, 5 হলে ক্ষেত্রফল কত?')">📐 ত্রিভুজ</button>
+    </div>
   </div>
-  <img id="prevImg" class="prev-img" src="" alt="">
-</div>
 
-<div class="detail-row">
-  <label>💬 অতিরিক্ত তথ্য (ঐচ্ছিক) — যেমন: "ক্লাস ৯", "SSC", "উচ্চতর গণিত"</label>
-  <textarea id="extra" placeholder="যেকোনো অতিরিক্ত তথ্য লিখুন..."></textarea>
-</div>
+  <!-- Image Mode -->
+  <div id="imgMode" style="display:none">
+    <div class="upload-area" id="uploadArea" onclick="document.getElementById('fi').click()">
+      <span class="upload-icon">📸</span>
+      <h3>প্রশ্নের ছবি আপলোড করুন</h3>
+      <p>গণিত, পদার্থ বা রসায়নের যেকোনো প্রশ্নের ছবি দিন</p>
+      <p style="margin-top:.4rem;font-size:.73rem;color:#475569">JPG, PNG সাপোর্টেড • ড্র্যাগ & ড্রপ করুন</p>
+      <input type="file" id="fi" accept="image/*">
+    </div>
+    <div class="prev-wrap" id="prevWrap">
+      <div class="prev-top">
+        <span id="fname">📄 ছবি লোড হয়েছে</span>
+        <button class="rm-btn" onclick="rmImg()">✕ সরান</button>
+      </div>
+      <img id="prevImg" class="prev-img" src="" alt="">
+    </div>
+  </div>
 
-<button class="solve-btn" id="solveBtn" onclick="solve()">
-  <span>🚀 সমাধান করুন</span>
-</button>
+  <div class="extra-row">
+    <label>💬 অতিরিক্ত তথ্য (ঐচ্ছিক) — যেমন: ক্লাস ৯, SSC, HSC</label>
+    <input type="text" id="extra" placeholder="ক্লাস বা পরীক্ষার নাম লিখুন...">
+  </div>
+
+  <button class="solve-btn" id="solveBtn" onclick="solve()">
+    <span>🚀 সমাধান করুন</span>
+  </button>
+</div>
 
 <div class="loading" id="loading">
   <div class="lab">
@@ -304,80 +212,82 @@ header {text-align:center;margin-bottom:2rem;animation:fadeDown .6s ease}
     <div class="spin-ring" style="border-top-color:var(--chem)"></div>
   </div>
   <p>প্রশ্ন বিশ্লেষণ করা হচ্ছে...</p>
-  <p class="load-sub">AI সমাধান তৈরি করছে, একটু অপেক্ষা করুন</p>
 </div>
 
 <div class="result" id="result" style="display:none"></div>
 
 </div>
-
 <script>
-const GROQ_API_KEY = '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';
-let b64=null, iType=null, subj='all', solData=null;
+const GROQ_API_KEY='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';
+let b64=null,iType=null,subj='all',mode='text',solData=null;
 
-// Drag & Drop
-const ua = document.getElementById('uploadArea');
+// Mode switching
+function setMode(m){
+  mode=m;
+  document.getElementById('textMode').style.display=m==='text'?'block':'none';
+  document.getElementById('imgMode').style.display=m==='image'?'block':'none';
+  document.getElementById('tabText').classList.toggle('active',m==='text');
+  document.getElementById('tabImg').classList.toggle('active',m==='image');
+}
+
+// Subject
+function setSubj(el,s){subj=s;document.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));el.classList.add('active')}
+
+// Text input
+function updateChar(){document.getElementById('charCount').textContent=document.getElementById('qInput').value.length}
+function setEx(t){document.getElementById('qInput').value=t;updateChar()}
+
+// Image upload
+const ua=document.getElementById('uploadArea');
 ua.addEventListener('dragover',e=>{e.preventDefault();ua.classList.add('drag')});
 ua.addEventListener('dragleave',()=>ua.classList.remove('drag'));
 ua.addEventListener('drop',e=>{e.preventDefault();ua.classList.remove('drag');if(e.dataTransfer.files[0])loadFile(e.dataTransfer.files[0])});
 document.getElementById('fi').addEventListener('change',e=>{if(e.target.files[0])loadFile(e.target.files[0])});
 
 function loadFile(f){
-  if(!f.type.startsWith('image/')){showErr('শুধুমাত্র ছবি ফাইল সাপোর্টেড!');return}
-  hideErr(); iType=f.type;
-  document.getElementById('fname').textContent='📄 '+f.name;
+  if(!f.type.startsWith('image/')){showErr('শুধুমাত্র ছবি ফাইল!');return}
+  hideErr();iType=f.type;document.getElementById('fname').textContent='📄 '+f.name;
   const r=new FileReader();
   r.onload=e=>{b64=e.target.result.split(',')[1];document.getElementById('prevImg').src=e.target.result;document.getElementById('prevWrap').classList.add('show');ua.style.display='none'};
   r.readAsDataURL(f);
 }
 
-function rmImg(){b64=null;document.getElementById('prevWrap').classList.remove('show');ua.style.display='block';document.getElementById('fi').value='';document.getElementById('result').style.display='none'}
-
-function setSubj(el,s){subj=s;document.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));el.classList.add('active')}
+function rmImg(){b64=null;document.getElementById('prevWrap').classList.remove('show');ua.style.display='block';document.getElementById('fi').value=''}
 
 async function solve(){
-  if(!b64){showErr('প্রথমে একটি ছবি আপলোড করুন!');return}
   const extra=document.getElementById('extra').value;
   const subjNames={all:'যেকোনো বিষয়',math:'গণিত',phys:'পদার্থবিজ্ঞান',chem:'রসায়ন'};
-  const subjName=subjNames[subj];
+  const sn=subjNames[subj];
+
+  if(mode==='text'&&!document.getElementById('qInput').value.trim()){showErr('প্রশ্ন লিখুন!');return}
+  if(mode==='image'&&!b64){showErr('ছবি আপলোড করুন!');return}
 
   hideErr();
   document.getElementById('loading').classList.add('show');
   document.getElementById('result').style.display='none';
   document.getElementById('solveBtn').disabled=true;
 
-  const prompt=`তুমি একজন বিশেষজ্ঞ ${subjName} শিক্ষক। এই ছবিতে একটি প্রশ্ন আছে। সেটি সমাধান করো।
-${extra?'অতিরিক্ত তথ্য: '+extra:''}
+  const prompt=`তুমি একজন বিশেষজ্ঞ ${sn} শিক্ষক। নিচের প্রশ্নটি সমাধান করো।${extra?'\nঅতিরিক্ত তথ্য: '+extra:''}
 
 শুধুমাত্র এই JSON ফরম্যাটে উত্তর দাও:
-{
-  "subject": "গণিত/পদার্থ/রসায়ন",
-  "topic": "অধ্যায়ের নাম",
-  "question": "প্রশ্নটি সংক্ষেপে",
-  "steps": [
-    {
-      "title": "ধাপের নাম",
-      "explanation": "বিস্তারিত ব্যাখ্যা",
-      "formula": "সূত্র বা সমীকরণ (যদি থাকে)"
-    }
-  ],
-  "answer": "চূড়ান্ত উত্তর",
-  "unit": "একক (যদি থাকে)",
-  "tips": ["গুরুত্বপূর্ণ টিপস ১", "টিপস ২", "টিপস ৩"]
-}`;
+{"subject":"গণিত/পদার্থ/রসায়ন","topic":"অধ্যায়","question":"প্রশ্ন সংক্ষেপে","steps":[{"title":"ধাপের নাম","explanation":"বিস্তারিত ব্যাখ্যা বাংলায়","formula":"সূত্র (যদি থাকে)"}],"answer":"চূড়ান্ত উত্তর","unit":"একক","tips":["টিপস ১","টিপস ২"]}`;
 
   try{
+    let messages;
+    if(mode==='text'){
+      const q=document.getElementById('qInput').value.trim();
+      messages=[{role:'user',content:prompt+'\n\nপ্রশ্ন: '+q}];
+    } else {
+      messages=[{role:'user',content:[
+        {type:'image_url',image_url:{url:'data:'+iType+';base64,'+b64}},
+        {type:'text',text:prompt}
+      ]}];
+    }
+
     const res=await fetch('https://api.groq.com/openai/v1/chat/completions',{
       method:'POST',
       headers:{'Content-Type':'application/json','Authorization':'Bearer '+GROQ_API_KEY},
-      body:JSON.stringify({
-        model:'meta-llama/llama-4-scout-17b-16e-instruct',
-        max_tokens:3000,
-        messages:[{role:'user',content:[
-          {type:'image_url',image_url:{url:'data:'+iType+';base64,'+b64}},
-          {type:'text',text:prompt}
-        ]}]
-      })
+      body:JSON.stringify({model:'meta-llama/llama-4-scout-17b-16e-instruct',max_tokens:3000,messages})
     });
     if(!res.ok){const e=await res.json();throw new Error(e.error?.message||'API error')}
     const d=await res.json();
@@ -392,65 +302,44 @@ ${extra?'অতিরিক্ত তথ্য: '+extra:''}
 }
 
 function getColor(s){
-  const sl=s.toLowerCase();
+  const sl=(s||'').toLowerCase();
   if(sl.includes('গণিত')||sl.includes('math'))return'math';
-  if(sl.includes('পদার্থ')||sl.includes('phys')||sl.includes('physics'))return'phys';
+  if(sl.includes('পদার্থ')||sl.includes('phys'))return'phys';
   if(sl.includes('রসায়ন')||sl.includes('chem'))return'chem';
   return'gen';
 }
 
 function showResult(d){
-  const c=getColor(d.subject||'');
-  const badgeClass=`subj-${c}`;
-  const stepClass=c==='gen'?'':c;
-
+  const c=getColor(d.subject);
   let stepsHTML='';
   (d.steps||[]).forEach((st,i)=>{
-    stepsHTML+=`<div class="step-card ${stepClass}" style="animation-delay:${i*.08}s">
+    stepsHTML+=`<div class="step-card ${c==='gen'?'':c}" style="animation-delay:${i*.08}s">
       <div class="step-num">ধাপ ${i+1}</div>
       <div class="step-title">${st.title||''}</div>
       <div class="step-body">${st.explanation||''}</div>
       ${st.formula?`<div class="step-formula">📐 ${st.formula}</div>`:''}
     </div>`;
   });
-
   let tipsHTML='';
   (d.tips||[]).forEach(t=>{tipsHTML+=`<div class="tip-item">${t}</div>`});
 
   const html=`
     <div class="result-header">
-      <span class="subj-badge ${badgeClass}">${d.subject||'সমাধান'}</span>
+      <span class="subj-badge subj-${c}">${d.subject||'সমাধান'}</span>
       <span class="result-title">${d.topic||''}</span>
     </div>
-    ${d.question?`<div style="background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1rem 1.2rem;margin-bottom:1.2rem;font-size:.88rem;color:#94a3b8"><strong style="color:var(--text)">❓ প্রশ্ন:</strong> ${d.question}</div>`:''}
+    ${d.question?`<div style="background:var(--s1);border:1px solid var(--border);border-radius:11px;padding:.9rem 1.1rem;margin-bottom:1.1rem;font-size:.85rem;color:#94a3b8"><strong style="color:var(--text)">❓ প্রশ্ন:</strong> ${d.question}</div>`:''}
     <div class="steps-wrap">${stepsHTML}</div>
     <div class="final-ans">
       <div class="final-label">✅ চূড়ান্ত উত্তর</div>
-      <div class="final-value">${d.answer||'দেখুন উপরের ধাপগুলো'}</div>
+      <div class="final-value">${d.answer||'উপরের ধাপগুলো দেখুন'}</div>
       ${d.unit?`<div class="final-unit">একক: ${d.unit}</div>`:''}
     </div>
     ${tipsHTML?`<div class="tips-box"><div class="tips-label">💡 মনে রাখো</div>${tipsHTML}</div>`:''}
     <div class="act-bar">
       <button class="act-btn copy-b" onclick="copyResult()">📋 কপি করুন</button>
-      <button class="act-btn new-b" onclick="rmImg()">🔄 নতুন প্রশ্ন</button>
+      <button class="act-btn new-b" onclick="newQ()">🔄 নতুন প্রশ্ন</button>
     </div>`;
 
   const rd=document.getElementById('result');
-  rd.innerHTML=html; rd.style.display='block';
-  rd.scrollIntoView({behavior:'smooth'});
-}
-
-function copyResult(){
-  if(!solData)return;
-  let t=`বিষয়: ${solData.subject}\nটপিক: ${solData.topic}\nপ্রশ্ন: ${solData.question}\n\nসমাধান:\n`;
-  (solData.steps||[]).forEach((s,i)=>{t+=`\nধাপ ${i+1}: ${s.title}\n${s.explanation}\n${s.formula?'সূত্র: '+s.formula+'\n':''}`});
-  t+=`\nউত্তর: ${solData.answer} ${solData.unit||''}`;
-  navigator.clipboard.writeText(t).then(()=>alert('✅ কপি হয়েছে!'));
-}
-
-function showErr(m){document.getElementById('errMsg').textContent=m;document.getElementById('err').classList.add('show')}
-function hideErr(){document.getElementById('err').classList.remove('show')}
-</script>
-</body>
-  </html>
-  
+  rd.innerHTML=html;rd.style.display='block';
